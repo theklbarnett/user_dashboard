@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sign In</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'dashboard_style.css' %}">
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			if ({{request.session.user_level}} != 9) {
+				$('.admin').css('display', 'none');
+				$('#content_header, h3').html("<h3>All Users</h3>");
+			}		
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<h2>Demo Dashboard</h2>
+			<a href="/">Home</a>
+			<a href="/">Profile</a>
+			<a href="/logout" id="logout">Log out</a>
+		</div>
+		<div id="content">
+			<div id="content_header">
+				<h3>Manage Users</h3>
+				<button class="btn btn-sm btn-primary admin">Add new</button>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Created At</th>
+						<th>User Level</th>
+						<th class="admin">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{user.id}}</td>
+							<td>{{user.first_name}} {{user.last_name}}</td>
+							<td>{{user.email}}</td>
+							<td>{{user.created_at}}</td>
+							<td>
+								{% if user.user_level == 9 %}
+									admin
+								{% else %}
+									normal
+								{% endif %}
+							</td>
+							<td class="admin">
+								<a href="">edit</a> |
+								<a href="">remove</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
