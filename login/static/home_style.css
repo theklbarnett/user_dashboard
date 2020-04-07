@@ -1,0 +1,42 @@
+#wrapper {
+	padding: 30px;
+}
+
+#header {
+	width: 100%;
+	border-bottom: 2px solid black;
+}
+
+	#header h2 {
+		display: inline-block;
+		vertical-align: bottom;
+		padding-top: 10px;
+		padding-left: 10px;
+	}
+
+	#header a {
+		display: inline-block;
+		padding: 10px;
+		margin: auto;
+	}
+
+	#links {
+		display: inline-block;
+		float: right;
+		margin-right: 10px;
+		margin-top: 15px;
+	}
+
+#welcome {
+	padding: 20px;
+	margin: 10px;
+	background-color: lightgrey;
+	border: 3px solid darkgrey;
+}
+
+.direction {
+	width: 32%;
+	display: inline-block;
+	padding: 10px;
+	vertical-align: top;
+}
