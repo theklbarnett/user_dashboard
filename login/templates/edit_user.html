@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Edit Profile</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'edit_user_style.css' %}">
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			if ({{request.session.user_level}} != 9) {
+				$('#return').css('display', 'none');
+			} else {
+				$('#content h3').html("<h3>Edit user #{{user.id}}</h3>");
+				if ({{user.user_level}} == 9) {
+					$('#edit_info span').html("<label for='user_level'>User Level</label><select name='user_level'><option value='1'>normal</option><option value='9' selected>admin</option></select>")
+				} else {
+					$('#edit_info span').html("<label for='user_level'>User Level</label><select name='user_level'><option value='1' selected>normal</option><option value='9'>admin</option></select>")
+				}			
+			}	
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<h2>Demo Dashboard</h2>
+			<a href="/">Home</a>
+			<a href="/users/edit">Profile</a>
+			<a href="/logout" id="logout">Log out</a>
+		</div>
+		<a href="/dashboard" class="btn btn-sm btn-primary" id="return">Return to Dashboard</a>
+		<div id="content">
+			<h3>Edit profile</h3>
+			<div id="edit_info">
+				<h4>Edit Information</h4>
+				<form action="update_info" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="id" value="{{user.id}}">
+					<label for="first_name">First Name</label>
+					<input type="text" name="first_name" value="{{user.first_name}}">
+					<label for="last_name">Last Name</label>
+					<input type="text" name="last_name" value="{{user.last_name}}">
+					<label for="email">Email</label>
+					<input type="text" name="email" id="email" value="{{user.email}}">
+					<span></span>
+					<button type="submit" class="btn-success">Save</button>
+				</form>		
+				<ul class="messages info">
+					{% if messages %}
+						{% for message in messages %}
+							{% if message.extra_tags == 'info' %}
+								<li>{{ message }}</li>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</ul>
+			</div>
+			<div id="change_password">
+				<h4>Change Password</h4>
+				<form action="update_password" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="id" value="{{user.id}}">
+					<label for="password">Password</label>
+					<input type="Password" name="password">
+					<label for="pw_confirm">Confirm Password</label>
+					<input type="Password" name="pw_confirm">
+					<button type="submit" class="btn-success">Update Password</button>
+				</form>		
+				<ul class="messages password">
+					{% if messages %}
+						{% for message in messages %}
+							{% if message.extra_tags == 'password' %}
+								<li>{{ message }}</li>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</ul>
+			</div>
+			<div id="edit_description">
+				<h4>Edit Description</h4>
+				<form action="update_description" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="id" value="{{user.id}}">
+					<input name="description" value="{{user.description}}">
+					<button type="submit" class="btn-success">Save</button>
+				</form>
+				<ul class="messages description">
+					{% if messages %}
+						{% for message in messages %}
+							{% if message.extra_tags == 'description' %}
+								<li>{{ message }}</li>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Sign In</title>
+	<title>User Dashboard</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	{% load static %}
@@ -11,7 +11,7 @@
 		$(document).ready(function() {
 			if ({{request.session.user_level}} != 9) {
 				$('.admin').css('display', 'none');
-				$('#content_header, h3').html("<h3>All Users</h3>");
+				$('#content_header h3').html("<h3>All Users</h3>");
 			}		
 		});
 	</script>
@@ -21,13 +21,13 @@
 		<div id="header">
 			<h2>Demo Dashboard</h2>
 			<a href="/">Home</a>
-			<a href="/">Profile</a>
+			<a href="/users/edit">Profile</a>
 			<a href="/logout" id="logout">Log out</a>
 		</div>
 		<div id="content">
 			<div id="content_header">
 				<h3>Manage Users</h3>
-				<button class="btn btn-sm btn-primary admin">Add new</button>
+				<a href="/users/new" class="btn btn-sm btn-primary admin">Add new</a>
 			</div>
 			<table class="table">
 				<thead>
@@ -55,8 +55,8 @@
 								{% endif %}
 							</td>
 							<td class="admin">
-								<a href="">edit</a> |
-								<a href="">remove</a>
+								<a href="/users/edit/{{user.id}}">edit</a> |
+								<a href="/users/remove/{{user.id}}">remove</a>
 							</td>
 						</tr>
 					{% endfor %}

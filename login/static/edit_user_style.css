@@ -19,29 +19,43 @@
 		padding: 10px;	
 	}
 
-	#signin {
-		float: right;
-		margin-top: 12px;
-	}
-
 	#logout {
 		float: right;
 		margin-top: 12px;
 	}
+
+#content h3 {
+	margin: 10px;
+	margin-top: 20px;
+}
 
 #return {
 	float: right;
 	margin-top: 20px;
 }
 
-#registration, #login {
+#edit_info, #change_password {
 	display: inline-block;
 	width: 400px;
 	vertical-align: top;
-	margin: auto;
-	padding-top: 15px;
-	padding-left: 10px;
+	padding: 20px;
+	border: 1px solid black;
+	margin: 10px;
+	height: 270px;
 }
+
+#edit_description {
+	padding: 20px;
+	border: 1px solid black;
+	margin: 10px;
+	max-width: 824px;
+}
+	
+	#edit_description input {
+		width: 100%;
+		padding-bottom: 70px;
+
+	}
 
 .messages {
 	color: red;
@@ -49,22 +63,27 @@
 	font-size: 12px;
 	margin-top: 10px;
 	text-align: center;
-	margin-right: 90px;
 	padding: 0;
 }
 
 input {
-	width: 40%;
+	width: 50%;
+}
+
+select {
+	width: 50%;
+	margin-left: 5px;
 }
 
 label {
-	width: 35%;
+	width: 40%;
 }
 
 button {
 	display: block;
-	margin-left: 57%;
-	margin-top: 10px;
+	margin-top: 12px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 form {
