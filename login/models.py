@@ -1,5 +1,4 @@
 from django.db import models
-
 from django.db import models
 import re
 from dateutil.parser import parse

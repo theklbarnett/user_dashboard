@@ -67,16 +67,16 @@
 }
 
 input {
-	width: 50%;
+	width: 180px;
 }
 
 select {
-	width: 50%;
+	width: 180px;
 	margin-left: 5px;
 }
 
 label {
-	width: 40%;
+	width: 144px;
 }
 
 button {
@@ -88,4 +88,38 @@ button {
 
 form {
 	margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 530px) {
+	#header h2 {
+		display: block;
+	}
+	#logout {
+		margin-top: 0;
+	}
+	#header a {
+		padding-top: 0;
+	}
+	#edit_info, #change_password {
+		width: 400px;
+	}
+	#edit_description {
+		width: 400px;
+	}
+}
+
+@media only screen and (max-width: 903px) and (min-width: 530px) {
+	#edit_info, #change_password {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		width: 500px;
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+	#edit_description {
+		margin-left: auto;
+		margin-right: auto;
+		width: 500px;
+	}
 }

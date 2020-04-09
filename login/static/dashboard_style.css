@@ -37,3 +37,18 @@
 		float: right;
 		margin-right: 10px;
 	}
+
+@media only screen and (max-width: 530px) {
+	#header h2 {
+		display: block;
+	}
+	#logout {
+		margin-top: 0;
+	}
+	#header a {
+		padding-top: 0;
+	}
+	.rm-small {
+		display: none;
+	}
+}

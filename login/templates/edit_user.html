@@ -33,7 +33,7 @@
 		<a href="/dashboard" class="btn btn-sm btn-primary" id="return">Return to Dashboard</a>
 		<div id="content">
 			<h3>Edit profile</h3>
-			<div id="edit_info">
+			<div id="edit_info" class="container-fluid">
 				<h4>Edit Information</h4>
 				<form action="update_info" method="post">
 					{% csrf_token %}
@@ -57,7 +57,7 @@
 					{% endif %}
 				</ul>
 			</div>
-			<div id="change_password">
+			<div id="change_password" class="container-fluid">
 				<h4>Change Password</h4>
 				<form action="update_password" method="post">
 					{% csrf_token %}
@@ -78,7 +78,7 @@
 					{% endif %}
 				</ul>
 			</div>
-			<div id="edit_description">
+			<div id="edit_description" class="container-fluid">
 				<h4>Edit Description</h4>
 				<form action="update_description" method="post">
 					{% csrf_token %}
